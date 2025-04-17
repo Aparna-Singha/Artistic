@@ -16,10 +16,10 @@ function Navbar() {
           <Link to="/" style={{ marginRight: "1rem" }}>
             Home
           </Link>
-          <Link to="/about" style={{ marginRight: "1rem" }}>
+          {/* <Link to="/about" style={{ marginRight: "1rem" }}>
             About
           </Link>
-          <Link to="/contact">Contact</Link>
+          <Link to="/contact">Contact</Link> */}
         </div>
       </div>
     </nav>
