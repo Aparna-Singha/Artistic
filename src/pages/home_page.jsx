@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ArtFeed from '../components/ArtField/ArtFeed';
+import ArtFeed from '../components/ArtFeed/ArtFeed';
 
 const HomePage = () => {
   const [submissions, setSubmissions] = useState([]);
