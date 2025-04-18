@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './Modal.css';
 
 const Modal = ({ isOpen, closeModal }) => {
@@ -13,7 +13,7 @@ const Modal = ({ isOpen, closeModal }) => {
     artImage: null,
   });
 
-  const [submit,SetSubmit] = useState(false);
+  const [submit, setSubmit] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -28,20 +28,41 @@ const Modal = ({ isOpen, closeModal }) => {
     setFormData({ ...formData, artImage: file });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Submitted:', formData);
+  
+    const toBase64 = (file) => {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = (error) => reject(error);
+      });
+    };
+  
+    let base64Image = '';
+    if (formData.artImage) {
+      base64Image = await toBase64(formData.artImage);
+    }
+  
+    const submission = {
+      ...formData,
+      artImage: base64Image,
+      timestamp: new Date().toISOString(),
+    };
+  
+    const existing = JSON.parse(localStorage.getItem('submissions')) || [];
+    localStorage.setItem('submissions', JSON.stringify([...existing, submission]));
+  
     closeModal();
+    window.location.reload(); 
   };
-  const isSubmit = ()=>{
-    SetSubmit(true)
+
+  const isSubmit = () => {
+    setSubmit(true);
   };
 
   if (!isOpen) return null;
-
-//   useEffect(()=>{
-//     localStorage.setItem(`id${i}`,artImage,n)
-//   },[submit])
 
   return (
     <div className="modal-overlay">
