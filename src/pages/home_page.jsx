@@ -1,20 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import ArtFeed from '../components/ArtFeed/ArtFeed';
+import React, { useContext } from 'react';
+import ArtSection from '../components/ArtSection/ArtSection';
+import { SubmissionsContext } from '../context/submissions';
 
 const HomePage = () => {
-  const [submissions, setSubmissions] = useState([]);
-
-  useEffect(() => {
-    const storedSubmissions = JSON.parse(localStorage.getItem('submissions')) || [];
-    setSubmissions(storedSubmissions);
-  }, []);
-  const handleDeleteSubmission = (timestamp) => {
-    const updated = submissions.filter(sub => sub.timestamp !== timestamp);
-    setSubmissions(updated);
-    localStorage.setItem('submissions', JSON.stringify(updated));
-  };
-
-
+  const { submissions } = useContext(SubmissionsContext);
 
   const groupedSubmissions = submissions.reduce((acc, submission) => {
     const type = submission.artName || 'Others';
@@ -22,16 +11,11 @@ const HomePage = () => {
     acc[type].push(submission);
     return acc;
   }, {});
-
-
   
   return (
     <div className="home-page">
       {Object.keys(groupedSubmissions).map((artType) => (
-        <div key={artType} className="art-section">
-          <h2 className="art-section-title">{artType}</h2>
-          <ArtFeed submissions={groupedSubmissions[artType]} onDelete={handleDeleteSubmission} />
-        </div>
+        <ArtSection artType={artType} key={artType} />
       ))}
     </div>
   );

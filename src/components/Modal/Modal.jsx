@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Modal.css';
+import { SubmissionsContext } from '../../context/submissions';
 
 const Modal = ({ isOpen, closeModal }) => {
+  const { addSubmission } = useContext(SubmissionsContext);
   const [formData, setFormData] = useState({
     artistName: '',
     artName: '',
@@ -12,8 +14,6 @@ const Modal = ({ isOpen, closeModal }) => {
     price: '',
     artImage: null,
   });
-
-  const [submit, setSubmit] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -49,17 +49,11 @@ const Modal = ({ isOpen, closeModal }) => {
       ...formData,
       artImage: base64Image,
       timestamp: new Date().toISOString(),
+      id: new Date().toISOString(),
     };
-  
-    const existing = JSON.parse(localStorage.getItem('submissions')) || [];
-    localStorage.setItem('submissions', JSON.stringify([...existing, submission]));
-  
+    
+    addSubmission(submission);
     closeModal();
-    window.location.reload(); 
-  };
-
-  const isSubmit = () => {
-    setSubmit(true);
   };
 
   if (!isOpen) return null;
@@ -126,7 +120,7 @@ const Modal = ({ isOpen, closeModal }) => {
             </div>
           )}
 
-          <button type="submit" className="modal-submit-button" onClick={isSubmit}>Submit</button>
+          <button type="submit" className="modal-submit-button">Submit</button>
         </form>
         <button onClick={closeModal} className="modal-close-button">Close</button>
       </div>
