@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "../NavBar/Navbar"; // Adjust the path as necessary
+import Navbar from "../NavBar/Navbar";
 import BottomButton from "../BottomButton/BottomButton";
 function Layout() {
   return (
     <>
       <Navbar />
-      <Outlet /> {/* this is where HomePage, About, etc. will render */}
+      <Outlet />
       <BottomButton/>
     </>
   );

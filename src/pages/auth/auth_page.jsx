@@ -1,4 +1,5 @@
 import AuthSection from "../../components/AuthSection/AuthSection";
+import flowers from "../../assets/flowers.png";
 import "./auth_page.css";
 
 const AuthPage = () => {
@@ -6,7 +7,7 @@ const AuthPage = () => {
     <div className="auth-page">
       <div className="image-section">
         <img
-          src="https://picsum.photos/720/1080"
+          src={flowers}
           alt="Random Image - Lorem Picsum"
         />
       </div>

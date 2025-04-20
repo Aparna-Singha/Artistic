@@ -14,6 +14,11 @@ const AuthSection = () => {
 
   return (
     <div className="auth-section">
+      <h1>
+        Make art that colorizes the world,
+        even if it itself is black and white.
+      </h1>
+
       <div className="auth-box">
         <Tabs mode={mode} setMode={setMode} tabs={tabs} />
       </div>

@@ -1,19 +1,34 @@
 .auth-page {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    overflow: hidden;
-  }
-  
-  .auth-page > * {
-    flex: 1;
-    height: 100%;
-  }
-  
-  .auth-page > .image-section img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-  }
-  
-  
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  background-image: url("../../assets/canvas.png");
+  background-size: 5rem 5rem;
+}
+
+.auth-page > * {
+  flex: 1;
+  height: 100%;
+}
+
+.image-section {
+  mix-blend-mode: darken;
+  filter: brightness(2);
+  box-shadow: 0 0 4rem 2rem #00000033;
+}
+
+.auth-page > .image-section img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  filter: brightness(4) contrast(4);
+  mix-blend-mode: overlay;
+}
+
+.auth-page > .auth-section {
+  position: relative;
+  z-index: 2;
+}
+

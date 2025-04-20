@@ -1,22 +1,14 @@
-import { useContext } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHeart,
   faComment,
   faBookmark,
-  faTrashAlt, 
 } from '@fortawesome/free-regular-svg-icons';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
-import { SubmissionsContext } from "../../context/submissions";
 
 import './ArtCard.css';
 
 const ArtCard = ({ submission }) => {
-  const { removeSubmission } = useContext(SubmissionsContext);
-  const handleDelete = () => {
-    removeSubmission(submission.timestamp);
-  };
-
   return (
     <div className="art-card">
       <img
@@ -38,9 +30,6 @@ const ArtCard = ({ submission }) => {
         <button><FontAwesomeIcon icon={faComment} /></button>
         <button><FontAwesomeIcon icon={faShareAlt} /></button>
         <button><FontAwesomeIcon icon={faBookmark} /></button>
-        <button onClick={() => handleDelete(submission.timestamp)}>
-          <FontAwesomeIcon icon={faTrashAlt} />
-        </button>
       </div>
     </div>
   )

@@ -1,0 +1,11 @@
+.art-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .art-section h2 {
+    margin-left: 2rem;
+  }
+  
+  
