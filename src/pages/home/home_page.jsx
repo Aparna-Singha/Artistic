@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import ArtSection from '../components/ArtSection/ArtSection';
-import { SubmissionsContext } from '../context/submissions';
+import ArtSection from '../../components/ArtSection/ArtSection';
+import { SubmissionsContext } from '../../context/submissions';
 
 const HomePage = () => {
   const { submissions } = useContext(SubmissionsContext);
