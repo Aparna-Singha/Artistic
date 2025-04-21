@@ -9,9 +9,12 @@ import { SubmissionsContext } from '../../context/submissions';
 import ImageUploader from '../ImageUploader/ImageUploader';
 
 import './Modal.css';
+import { useStorage } from '../../hooks/storage';
 
 const Modal = ({ isOpen, closeModal }) => {
   const { submitArt } = useContext(SubmissionsContext);
+  const { getStorage } = useStorage();
+  const username = getStorage('username', null);
 
   const [formValid, setFormValid] = useState(false);
   const [formData, setFormData] = useState({
@@ -66,7 +69,7 @@ const Modal = ({ isOpen, closeModal }) => {
       ...formData,
       artImage: formData.artImage,
       timestamp: new Date().toISOString(),
-      id: new Date().toISOString(),
+      id: `${username}-${new Date.now()}`,
     };
     
     submitArt(submission);
@@ -78,6 +81,7 @@ const Modal = ({ isOpen, closeModal }) => {
     setFormValid(validateForm());
   }, [formData, validateForm]);
   
+  if (!username) return null;
   if (!isOpen) return null;
 
   return (
