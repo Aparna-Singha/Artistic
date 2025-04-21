@@ -12,8 +12,8 @@ function App() {
   return (
     <div className="app">
       <BrowserRouter>
-        <Navbar />
-        <UserButton />
+        <Navbar key={`nav-${window.location.pathname}`} />
+        <UserButton key={`ub-${window.location.pathname}`} />
 
         <Routes>
           <Route path="/" element={<HomePage />} />
