@@ -11,10 +11,12 @@ import "./App.css";
 import MeLikesPage from "./pages/me/likes_page";
 import MeSavesPage from "./pages/me/saves_page";
 import MeProfilePage from "./pages/me/profile_page";
+import ApiLoader from "./components/ApiLoader/ApiLoad";
 
 function App() {
   return (
     <div className="app">
+      <ApiLoader />
       <BrowserRouter>
         <Navbar key={`nav-${window.location.pathname}`} />
         <UserButton key={`ub-${window.location.pathname}`} />
