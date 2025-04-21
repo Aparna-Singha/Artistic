@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react';
 import './Modal.css';
 import { SubmissionsContext } from '../../context/submissions';
+import ImageUploader from '../ImageUploader/ImageUploader';
+import { postArt } from '../../api/art';
 
 const Modal = ({ isOpen, closeModal }) => {
   const { addSubmission } = useContext(SubmissionsContext);
@@ -23,36 +25,23 @@ const Modal = ({ isOpen, closeModal }) => {
     });
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setFormData({ ...formData, artImage: file });
+  const handleImageChange = (url) => {
+    setFormData({ ...formData, artImage: url });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    const toBase64 = (file) => {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = (error) => reject(error);
-      });
-    };
-  
-    let base64Image = '';
-    if (formData.artImage) {
-      base64Image = await toBase64(formData.artImage);
-    }
-  
     const submission = {
       ...formData,
-      artImage: base64Image,
+      artImage: formData.artImage,
       timestamp: new Date().toISOString(),
       id: new Date().toISOString(),
     };
     
+    postArt(submission);
     addSubmission(submission);
+
     closeModal();
   };
 
@@ -107,13 +96,13 @@ const Modal = ({ isOpen, closeModal }) => {
 
           <label className="modal-label">
             Upload Art Image:
-            <input type="file" accept="image/*" onChange={handleImageChange} className="modal-input" />
+            <ImageUploader setImageUrl={handleImageChange} />
           </label>
 
           {formData.artImage && (
             <div className="modal-preview-container">
               <img
-                src={URL.createObjectURL(formData.artImage)}
+                src={formData.artImage}
                 alt="Preview"
                 className="modal-preview-image"
               />
