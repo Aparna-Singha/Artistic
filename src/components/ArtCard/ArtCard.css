@@ -1,81 +1,84 @@
 .art-card {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-    overflow: hidden;
-    transition: transform 0.2s;
-    display: flex;
-    flex-direction: column;
-    font-family: 'Segoe UI', sans-serif;
-  }
-  
-  .art-card:hover {
-    transform: scale(1.02);
-  }
-  
-  .art-image {
-    width: 100%;
-    height: 140px;
-    object-fit: cover;
-  }
-  
-  .art-details {
-    padding: 10px;
-  }
-  
-  .art-details p,
-  .art-details span {
-    white-space: normal;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-  }
-  
-  .art-details h3 {
-    font-size: 14px;
-    margin: 0;
-    color: #222;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .art-details p {
-    font-size: 12px;
-    color: #666;
-    margin: 4px 0 0;
-    max-height: 36px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .art-info {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    font-size: 11px;
-    color: #555;
-    margin-top: 6px;
-  }
-  
-  .art-actions {
-    display: flex;
-    justify-content: space-around;
-    padding: 8px 10px;
-    border-top: 1px solid #eee;
-    background-color: #f4f4f4;
-  }
-  
-  .art-actions button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #333;
-    font-size: 14px;
-    padding: 4px;
-    transition: color 0.2s;
-  }
-  
-  .art-actions button:hover {
-    color: #007bff;
-  }
-  
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 0 0.5rem 0.25rem #00000033;
+  overflow: hidden;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.art-card:hover {
+  transform: scale(1.02);
+}
+
+.art-image {
+  width: 100%;
+  aspect-ratio: 1.5;
+  object-fit: cover;
+}
+
+.art-details {
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.art-details p,
+.art-details span {
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.art-details h3 {
+  font-size: 14px;
+  margin: 0;
+  color: #222;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.art-details p {
+  font-size: 12px;
+  color: #666;
+  margin: 4px 0 0;
+  max-height: 36px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.art-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 11px;
+  color: #555;
+  margin-top: 6px;
+}
+
+.art-actions {
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 10px;
+  border-top: 1px solid #eee;
+  background-color: #f4f4f4;
+}
+
+.art-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  font-size: 14px;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.art-actions button:hover {
+  color: #007bff;
+}

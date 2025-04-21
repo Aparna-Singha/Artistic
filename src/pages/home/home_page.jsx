@@ -4,17 +4,13 @@ import { SubmissionsContext } from '../../context/submissions';
 
 const HomePage = () => {
   const { submissions } = useContext(SubmissionsContext);
-
-  const groupedSubmissions = submissions.reduce((acc, submission) => {
-    const type = submission.artName || 'Others';
-    if (!acc[type]) acc[type] = [];
-    acc[type].push(submission);
-    return acc;
-  }, {});
+  
+  const artTypes = submissions.map(submission => submission.data.artName);
+  const uniqueArtTypes = [...new Set(artTypes)];
   
   return (
     <div className="home-page">
-      {Object.keys(groupedSubmissions).map((artType) => (
+      {uniqueArtTypes.map((artType) => (
         <ArtSection artType={artType} key={artType} />
       ))}
     </div>

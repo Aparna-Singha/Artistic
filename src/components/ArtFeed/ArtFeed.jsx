@@ -4,14 +4,16 @@ import ArtCard from '../ArtCard/ArtCard';
 
 import './ArtFeed.css';
 
-const ArtFeed = () => {
+const ArtFeed = ({ artType }) => {
   const { submissions } = useContext(SubmissionsContext);
 
   return (
     <div className="art-feed">
-      {submissions.map((submission, index) => (
-        <ArtCard submission={submission} key={index} />
-      ))}
+      {submissions
+        .filter(s => s.data.artName === artType)
+        .map((submission, index) => (
+          <ArtCard submission={submission} key={index} />
+        ))}
     </div>
   );
 };
