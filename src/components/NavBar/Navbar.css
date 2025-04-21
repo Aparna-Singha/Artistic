@@ -37,6 +37,7 @@
 }
 
 .navbar-categories,
+.navbar-user-actions,
 .navbar-colors {
   display: flex;
   align-items: center;
@@ -71,5 +72,35 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
+}
+
+.navbar-user-actions {
+  gap: 0rem;
+  height: 100%;
+}
+
+.navbar-user-actions a {
+  text-decoration: none;
+  height: 100%;
+  padding: 0.4rem;
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: #00000000;
+  border-radius: 5rem;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-user-actions a:hover {
+  border-color: #000000;
+}
+
+.navbar-user-action {
+  text-decoration: none;
+  color: #000;
+  position: relative;
+  height: 100%;
 }
 

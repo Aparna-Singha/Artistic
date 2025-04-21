@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 
-import logo from "../../assets/logo.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBookmark,
+  faHeart,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 
+import logo from "../../assets/logo.jpg";
 import "./Navbar.css";
 
 function Navbar() {
@@ -40,6 +46,26 @@ function Navbar() {
               {category.name}
             </Link>
           ))}
+        </div>
+        <div className="navbar-user-actions">
+          <Link to="/me/likes">
+            <FontAwesomeIcon
+              className="navbar-user-action"
+              icon={faHeart}
+            />
+          </Link>
+          <Link to="/me/saves">
+            <FontAwesomeIcon
+              className="navbar-user-action"
+              icon={faBookmark}
+            />
+          </Link>
+          <Link to="/me/profile">
+            <FontAwesomeIcon
+              className="navbar-user-action"
+              icon={faUser}
+            />
+          </Link>
         </div>
         <div className="navbar-colors">
           {colors.map((color, index) => (
