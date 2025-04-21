@@ -9,8 +9,12 @@ import {
 
 import logo from "../../assets/logo.jpg";
 import "./Navbar.css";
+import { useStorage } from "../../hooks/storage";
 
 function Navbar() {
+  const { getStorage } = useStorage();
+  const signedIn = getStorage("username", null) !== null;
+
   const categories = [
 	  { name: "Sketches", path: "sketch" },
 	  { name: "Perspectives", path: "perspective" },
@@ -47,26 +51,28 @@ function Navbar() {
             </Link>
           ))}
         </div>
-        <div className="navbar-user-actions">
-          <Link to="/me/likes">
-            <FontAwesomeIcon
-              className="navbar-user-action"
-              icon={faHeart}
-            />
-          </Link>
-          <Link to="/me/saves">
-            <FontAwesomeIcon
-              className="navbar-user-action"
-              icon={faBookmark}
-            />
-          </Link>
-          <Link to="/me/profile">
-            <FontAwesomeIcon
-              className="navbar-user-action"
-              icon={faUser}
-            />
-          </Link>
-        </div>
+        {signedIn && (
+          <div className="navbar-user-actions">
+            <Link to="/me/likes">
+              <FontAwesomeIcon
+                className="navbar-user-action"
+                icon={faHeart}
+                />
+            </Link>
+            <Link to="/me/saves">
+              <FontAwesomeIcon
+                className="navbar-user-action"
+                icon={faBookmark}
+                />
+            </Link>
+            <Link to="/me/profile">
+              <FontAwesomeIcon
+                className="navbar-user-action"
+                icon={faUser}
+                />
+            </Link>
+          </div>
+        )}
         <div className="navbar-colors">
           {colors.map((color, index) => (
             <Link

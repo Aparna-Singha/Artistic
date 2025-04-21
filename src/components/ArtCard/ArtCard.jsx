@@ -27,8 +27,8 @@ const ArtCard = ({ submission }) => {
     price,
   } = submission.data;
 
-  const [liked, setLiked] = useState(submission.interactions.liked);
-  const [saved, setSaved] = useState(submission.interactions.saved);
+  const [liked, setLiked] = useState(submission.interactions?.liked);
+  const [saved, setSaved] = useState(submission.interactions?.saved);
 
   const postId = submission.postId;
 
