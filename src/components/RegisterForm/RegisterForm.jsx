@@ -57,7 +57,7 @@ const RegisterForm = () => {
     }
 
     if (status === "success") {
-      navigate("/");
+      window.location.reload();
     } else {
       alert("Registration failed");
     }

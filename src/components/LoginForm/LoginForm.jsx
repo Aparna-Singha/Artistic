@@ -38,7 +38,7 @@ const LoginForm = () => {
     }
 
     if (status === "success") {
-      navigate("/");
+      window.location.reload();
     } else {
       alert("Login failed");
     }
