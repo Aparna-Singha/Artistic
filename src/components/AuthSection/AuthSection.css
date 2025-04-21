@@ -14,12 +14,12 @@
 }
 
 .auth-box {
-  border: 1px solid #ccc;
-  background-color: #ffffff;
+  border: 0.1rem solid #000;
+  background-color: transparent;
   border-radius: 1rem;
   padding: 20px;
   width: 80%;
   max-width: 25rem;
-  box-shadow: 0 0 4rem 2rem #00000033;
+  box-shadow: 0 0 1rem 0.5rem #00000033;
 }
 

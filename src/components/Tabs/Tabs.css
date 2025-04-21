@@ -10,15 +10,16 @@
 .tab-switcher {
   display: flex;
   justify-content: center;
-  background-color: #f0f0f0;
+  background-color: transparent;
   padding: 0.5rem;
   border-radius: 1rem;
+  border: 0.1rem solid #000;
   gap: 0;
 }
 
 .tab-switch-button {
   padding: 0.5rem 1rem;
-  background-color: #e0e0e000;
+  background-color: transparent;
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
@@ -26,7 +27,8 @@
 }
 
 .tab-switch-button.active {
-  background-color: #ffffff;
+  border: 0.1rem solid #000;
+  background-color: transparent;
   font-weight: bold;
 }
 

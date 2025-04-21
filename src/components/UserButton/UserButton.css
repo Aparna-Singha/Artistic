@@ -1,13 +1,22 @@
-.bottom-button{
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
+.user-button {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 0.1rem solid #000;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  z-index: 1000;
+  box-shadow: 0 0 1rem 0.5rem #00000033;
+  transition: background 0.3s ease;
+}
+
+.user-button:hover {
+  background: rgba(0, 0, 0, 0.1);
 }

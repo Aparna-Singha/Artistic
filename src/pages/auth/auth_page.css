@@ -1,6 +1,6 @@
 .auth-page {
-  height: 100vh;
-  width: 100vw;
+  width: 100%;
+  flex: 1;
   display: flex;
   overflow: hidden;
   position: relative;
@@ -11,18 +11,27 @@
   height: 100%;
 }
 
-.image-section {
+.auth-page > .image-section {
   mix-blend-mode: darken;
   filter: brightness(2);
-  box-shadow: 0 0 4rem 2rem #00000033;
+  padding: 4rem;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-box {
+  height: 100%;
+  border: 0.1rem solid #000;
+  box-shadow: 0 0 2rem 1rem #00000033;
+  border-radius: 1rem;
+  padding: 0.5rem;
 }
 
 .auth-page > .image-section img {
   height: 100%;
-  width: 100%;
-  object-fit: cover;
-  filter: brightness(4) contrast(4);
-  mix-blend-mode: overlay;
+  border-radius: 0.5rem;
 }
 
 .auth-page > .auth-section {

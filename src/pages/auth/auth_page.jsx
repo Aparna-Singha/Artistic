@@ -6,10 +6,12 @@ const AuthPage = () => {
   return (
     <div className="auth-page">
       <div className="image-section">
-        <img
-          src={flowers}
-          alt="Flowers, by Aparna Singha"
-        />
+        <div className="image-box">
+          <img
+            src={flowers}
+            alt="Flowers, by Aparna Singha"
+          />
+        </div>
       </div>
       <AuthSection />
     </div>
