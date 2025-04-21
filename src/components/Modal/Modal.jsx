@@ -69,7 +69,7 @@ const Modal = ({ isOpen, closeModal }) => {
       ...formData,
       artImage: formData.artImage,
       timestamp: new Date().toISOString(),
-      id: `${username}-${new Date.now()}`,
+      id: `${username}-${Date.now()}`,
     };
     
     submitArt(submission);
