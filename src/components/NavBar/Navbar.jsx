@@ -1,25 +1,59 @@
-// components/Navbar.jsx
 import { Link } from "react-router-dom";
-import logo from "./artisticlogo.jpg";
+
+import logo from "../../assets/logo.jpg";
+
+import "./Navbar.css";
+
 function Navbar() {
+  const categories = [
+	  { name: "Sketches", path: "sketch" },
+	  { name: "Perspectives", path: "perspective" },
+    { name: "Portraits", path: "portrait" },
+	  { name: "Comic", path: "comic" },
+	  { name: "Doodles", path: "doodle" },
+  ];
+
+  const colors = [
+    { name: "Crimson", hex: "DC143C" },
+    { name: "Amber", hex: "FFBF00" },
+    { name: "Emerald", hex: "50C878" },
+    { name: "Cerulean", hex: "007BA7" },
+    { name: "Royal Purple", hex: "7851A9" },
+    { name: "Coral", hex: "FF6F61" },
+  ];
+
   return (
-    <nav style={{ padding: "1rem", backgroundColor: "#ffffff" }}>
-      <div className="navbar-container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <div className="navbar-logo" style={{ display: "flex", alignItems: "center" }}>
-          <img
-            src={logo}
-            alt="Logo"
-            style={{ width: "50px", marginRight: "1rem" }}
-          />
+    <nav className="navbar">
+      <div className="navbar-container">
+        <div className="navbar-logo">
+          <Link to="/">
+            <img src={logo} alt="Logo" />
+          </Link>
         </div>
-        <div className="navbar-links">
-          <Link to="/" style={{ marginRight: "1rem" }}>
-            Home
-          </Link>
-          {/* <Link to="/about" style={{ marginRight: "1rem" }}>
-            About
-          </Link>
-          <Link to="/contact">Contact</Link> */}
+        <div className="navbar-categories">
+          {categories.map((category, index) => (
+            <Link
+              key={index}
+              to={`/categories/${category.path}`}
+              className="navbar-category"
+            >
+              {category.name}
+            </Link>
+          ))}
+        </div>
+        <div className="navbar-colors">
+          {colors.map((color, index) => (
+            <Link
+              key={index}
+              to={`/colors/${color.hex}`}
+              className="navbar-color"
+            >
+              <span
+                className="color-fill"
+                style={{ backgroundColor: `#${color.hex}` }}
+              ></span>
+            </Link>
+          ))}
         </div>
       </div>
     </nav>

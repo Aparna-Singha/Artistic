@@ -8,7 +8,7 @@ const AuthPage = () => {
       <div className="image-section">
         <img
           src={flowers}
-          alt="Random Image - Lorem Picsum"
+          alt="Flowers, by Aparna Singha"
         />
       </div>
       <AuthSection />

@@ -1,21 +1,24 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Layout from "./components/LayOut/Layout";
 import HomePage from "./pages/home/home_page";
 import AuthPage from "./pages/auth/auth_page";
 
 import "./App.css";
+import Navbar from "./components/NavBar/Navbar";
+import BottomButton from "./components/BottomButton/BottomButton";
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
+      <Navbar />
+      <BottomButton />
+
       <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<HomePage />} />
-        </Route>
+        <Route path="/" element={<HomePage />} />
         <Route path="/auth" element={<AuthPage />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 
