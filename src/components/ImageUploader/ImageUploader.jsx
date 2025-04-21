@@ -1,6 +1,7 @@
-import { IKContext, IKUpload } from "imagekitio-react";
-import { getImageAuth } from "../../api/upload";
 import { useCallback } from "react";
+import { IKContext, IKUpload } from "imagekitio-react";
+
+import { getImageAuth } from "../../api/upload";
 import { useStorage } from "../../hooks/storage";
 
 const ikEndpointUrl = 'https://ik.imagekit.io/aparna/';

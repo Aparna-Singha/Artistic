@@ -1,33 +1,31 @@
 import { createContext, useCallback, useEffect, useState } from "react";
-import { useStorage } from "../hooks/storage";
+import { getAllArts, postArt } from "../api/art";
 
 const SubmissionsContext = createContext();
 
-const SubmissionsProvider = ({ children }) => {
-  const { getStorage, setStorage }= useStorage();
-
-  const storageKey = 'submissions';
-  const existingData = getStorage(storageKey, []);
+const SubmissionsProvider = ({ children }) => {  
+  const [submissions, setSubmissions] = useState([]);
   
-  const [submissions, setSubmissions] = useState(existingData);
-  
-  const addSubmission = useCallback((submission) => {
-    setSubmissions(prev => [...prev, { ...submission }]);
+  const refreshArts = useCallback(async () => {
+    const response = await getAllArts();
+    if (response.status === 'success') {
+      setSubmissions(response.arts);
+    }
   }, []);
 
-  const removeSubmission = useCallback((id) => {
-    setSubmissions(prev => prev.filter(s => s.id !== id));
-  }, []);
+  const submitArt = useCallback(async (submission) => {
+    await postArt(submission);
+    refreshArts();
+  }, [refreshArts]);
 
   useEffect(() => {
-    setStorage(storageKey, submissions);
-  }, [submissions, setStorage, storageKey]);
+    refreshArts();
+  }, [refreshArts]);
 
   return (
     <SubmissionsContext.Provider value={{
       submissions,
-      addSubmission,
-      removeSubmission,
+      submitArt,
     }}>
       {children}
     </SubmissionsContext.Provider>

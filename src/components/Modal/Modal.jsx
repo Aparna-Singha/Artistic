@@ -1,11 +1,19 @@
-import React, { useContext, useState } from 'react';
-import './Modal.css';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useState
+} from 'react';
+
 import { SubmissionsContext } from '../../context/submissions';
 import ImageUploader from '../ImageUploader/ImageUploader';
-import { postArt } from '../../api/art';
+
+import './Modal.css';
 
 const Modal = ({ isOpen, closeModal }) => {
-  const { addSubmission } = useContext(SubmissionsContext);
+  const { submitArt } = useContext(SubmissionsContext);
+
+  const [formValid, setFormValid] = useState(false);
   const [formData, setFormData] = useState({
     artistName: '',
     artName: '',
@@ -16,6 +24,28 @@ const Modal = ({ isOpen, closeModal }) => {
     price: '',
     artImage: null,
   });
+
+  const validateForm = useCallback(() => {
+    const {
+      artistName,
+      artName,
+      bio,
+      hoursTaken,
+      description,
+      forSale,
+      price,
+    } = formData;
+    
+    if (!artistName) return false;
+    if (!artName) return false;
+    if (!bio) return false;
+    if (!hoursTaken || isNaN(hoursTaken) || hoursTaken <= 0) return false;
+    if (!description) return false;
+    if (forSale && (!price || isNaN(price) || price <= 0)) return false;
+    if (!formData.artImage) return false;
+    
+    return true;
+  }, [formData]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -39,12 +69,15 @@ const Modal = ({ isOpen, closeModal }) => {
       id: new Date().toISOString(),
     };
     
-    postArt(submission);
-    addSubmission(submission);
+    submitArt(submission);
 
     closeModal();
   };
 
+  useEffect(() => {
+    setFormValid(validateForm());
+  }, [formData, validateForm]);
+  
   if (!isOpen) return null;
 
   return (
@@ -109,9 +142,21 @@ const Modal = ({ isOpen, closeModal }) => {
             </div>
           )}
 
-          <button type="submit" className="modal-submit-button">Submit</button>
+          <button
+            type="submit"
+            className="modal-submit-button"
+            disabled={!formValid}
+          >
+            Submit
+          </button>
         </form>
-        <button onClick={closeModal} className="modal-close-button">Close</button>
+
+        <button
+          onClick={closeModal}
+          className="modal-close-button"
+        >
+          Close
+        </button>
       </div>
     </div>
   );
