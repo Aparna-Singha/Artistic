@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMugSaucer, faSignIn } from '@fortawesome/free-solid-svg-icons';
-
-import Modal from '../Modal/Modal'; 
 import { useStorage } from '../../hooks/storage';
 
+import Modal from '../Modal/Modal'; 
+
 import "./UserButton.css";
-import { Link } from 'react-router-dom';
 
 const BottomButton = () => {
   const { getStorage } = useStorage();
@@ -18,7 +18,7 @@ const BottomButton = () => {
   if (loggedOut) {
     return (
       <Link to="/auth">
-        <button className="user-button" onClick={openModal}>
+        <button className="user-button logged-out" onClick={openModal}>
           <FontAwesomeIcon icon={faSignIn} size="lg" />
         </button>
       </Link>

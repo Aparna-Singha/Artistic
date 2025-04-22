@@ -18,5 +18,18 @@
 }
 
 .user-button:hover {
-  background: rgba(0, 0, 0, 0.1);
+  background: #222222;
+}
+
+.user-button.logged-out::before {
+  content: 'Login Here ->';
+  position: absolute;
+  right: 100%;
+  text-wrap: nowrap;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  color: #000000;
+  /* border: 0.1rem solid #000; */
+  z-index: -2;
+  border-radius: 0.5rem;
 }
