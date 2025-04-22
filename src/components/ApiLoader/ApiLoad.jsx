@@ -7,9 +7,10 @@ const ApiLoader = () => {
   const [longerLoading, setLongerLoading] = useState(false);
 
   useEffect(() => {
-    const ping = async () => {
-      await pingApi();
-      setLoading(false);
+    const ping = () => {
+      pingApi.then(() => {
+        setLoading(false);
+      });
     };
 
     ping();
