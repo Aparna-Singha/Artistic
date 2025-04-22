@@ -12,6 +12,7 @@ import MeLikesPage from "./pages/me/likes_page";
 import MeSavesPage from "./pages/me/saves_page";
 import MeProfilePage from "./pages/me/profile_page";
 import ApiLoader from "./components/ApiLoader/ApiLoad";
+import CategoryPage from "./pages/search/category_page";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/auth" element={<AuthPage />} />
           <Route path="/colors/:color" element={<ColorPage />} />
+          <Route path="/categories/:category" element={<CategoryPage />} />
           <Route path="/me">
             <Route path="likes" element={<MeLikesPage />} />
             <Route path="saves" element={<MeSavesPage />} />
