@@ -18,7 +18,7 @@
 }
 
 .user-button:hover {
-  background: #222222;
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .user-button.logged-out::before {
@@ -33,3 +33,4 @@
   z-index: -2;
   border-radius: 0.5rem;
 }
+
