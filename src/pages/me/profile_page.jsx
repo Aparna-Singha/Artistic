@@ -1,10 +1,18 @@
+import "./profile_page.css";
+
 const MeProfilePage = () => {
   return (
     <div className="me-profile-page">
-      <h1>My Profile</h1>
-      <p>This is the profile page.</p>
+      <h2>
+        <span>
+          Your Profile Page will be
+        </span>
+      </h2>
+      <h1>
+        Coming Soon!
+      </h1>
     </div>
-  );
+  )
 };
 
 export default MeProfilePage;
